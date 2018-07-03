@@ -1,0 +1,31 @@
+ vonxc.radio.SimpleMessage.name max_size:100
+
+ vonxc.radio.DiagnosticResponse.payload max_size:128
+ vonxc.radio.DiagnosticRequest.name max_size:10
+ vonxc.radio.DiagnosticRequest.payload max_size:128
+ vonxc.radio.BusMessage.data max_size:128
+
+
+vonxc.radio.VersionResponse.value max_size:32
+vonxc.radio.DeviceIDResponse.value max_size:32
+vonxc.radio.FileOpenRequest.value max_size:32
+vonxc.radio.FileDeleteRequest.value max_size:32
+vonxc.radio.FileWriteRequest.value max_size:200
+vonxc.radio.FileReadResponse.value max_size:128
+vonxc.radio.FileListResponse.name max_size:64
+vonxc.radio.ValueItemResponse.name max_size:64
+vonxc.radio.DeviceConfigureItemResponse.name max_size:64
+vonxc.radio.DeviceConfigureInfo.payload max_size:128
+vonxc.radio.ChallegeResponse.device_id max_size:16
+vonxc.radio.ChallegeResponse.challenge max_size:16
+vonxc.radio.RequestAuth.id max_size:16
+vonxc.radio.RequestAuth.credential max_size:16
+vonxc.radio.GetSerial.value max_size:64
+
+ 
+
+vonxc.radio.RadioDynamicValueMap.valueList max_count:4
+vonxc.radio.RadioFixedValueMap.valueList max_count:10
+vonxc.radio.RadioPostionValueMap.valueList max_count:6
+vonxc.radio.DynamicField.string_value max_size:32
+vonxc.radio.DynamicField.byte_value max_size:32

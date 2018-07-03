@@ -1,0 +1,475 @@
+syntax = "proto2";
+package vonxc.radio;
+
+option java_package = "com.vonxc.radio";
+option java_outer_classname = "BinaryMessages";
+
+message RadioVehicleMessage {
+    enum Type { 
+        BUS = 1; 
+        SIMPLE = 2; 
+        DIAGNOSTIC_COMMAND = 3;
+        DEVICE_CONTROL_REQ = 4; 
+        DIAGNOSTIC_RESPONSE = 5;
+        DEVICE_CONTROL_RESP = 6; 
+        
+        RADIO_DYNAMIC_VALUE = 7; 
+        RADIO_FIXED_VALUE = 8; 
+        RADIO_POSITION_VALUE = 9; 
+        RADIO_TRIP_VALUE = 10; 
+    }
+    enum VERSION { 
+        VERSION_1_0= 1; 
+        VERSION_1_1= 2; 
+        VERSION_1_2= 3; 
+        VERSION_2_0= 4; 
+    }
+    
+    enum SENSOR_ID { 
+        id_first    =0;
+        id_engine_speed    =1;
+        id_vehicle_speed     =2;
+        id_engine_load    =3;
+        id_engine_coolant_temperature    =4;
+        id_barometric_pressure    =5;
+        id_commanded_throttle_position     =6;
+        id_fuel_level    =7;
+        id_intake_air_temperature     =8;
+        id_intake_manifold_pressure    =9;
+        id_running_time     =10;
+        id_throttle_position    =11;
+        id_fuel_pressure     =12;
+        id_mass_airflow     =13;
+        id_accelerator_pedal_position    =14;
+        id_ethanol_fuel_percentage     =15;
+        id_engine_oil_temperature    =16;
+        id_engine_torque    =17;
+        id_lat_degree    =18;
+        id_lon_degree    =19;
+        id_alt_meter    =20;
+        id_yaw    =21;
+        id_roll    =22;
+        id_pitch    =23;
+        id_x_accel    =24;
+        id_y_accel    =25;
+        id_z_accel    =26;
+        id_temperature    =27;
+        id_hdop = 28;
+        id_gps_accuracy = 29;
+        id_nothing     =30;
+        id_end    =31;
+    }
+    enum METRIC_ID {        
+        metirc_first    =0;
+        metirc_engine_on_time    =1;
+        metirc_engine_off_time    =2;
+        metirc_speed_on_time    =3;
+        metirc_speed_off_time    =4;
+        metirc_mtrip_airflow    =5;
+        metirc_mtrip_mfold_airflow    =6;
+        metirc_mtrip_on_time    =7;
+        metirc_mtrip_off_time    =8;
+        metirc_mtrip_duration    =9;
+        metirc_mtrip_distance    =10;
+        metirc_mtrip_max_speed    =11;
+        metirc_mtrip_meen_speed    =12;
+        metirc_mtrip_park_voltage    =13;
+        metirc_mtrip_max_voltage    =14;
+        metirc_mtrip_max_cool_temp    =15;
+        metirc_trip_on_time    =16;
+        metirc_trip_off_time    =17;
+        metirc_trip_off_que_count    =18;
+        metirc_trip_duration    =19;
+        metirc_trip_distance    =20;
+        metirc_trip_max_speed    =21;
+        metirc_trip_mean_speed    =22;
+        metirc_trip_park_voltage    =23;
+        metirc_trip_max_voltage    =24;
+        metirc_trip_max_cool_temp    =25;
+        metirc_trip_airflow    =26;
+        metirc_trip_mfold_airflow    =27;
+        metirc_trip_send_time    =28;
+        metirc_trip_start_lat    =29;
+        metirc_trip_end_lat    =30;
+        metirc_trip_start_lon    =31;
+        metirc_trip_end_lon    =32;
+        metirc_total_distance    =33;
+        metirc_boot_timegap    =34;
+        metirc_gps_ttff    =35;
+        metirc_gps_nsat    =36;
+        metirc_radio_ttfc    =37;
+        metirc_radio_last_stime    =38;
+        metirc_radio_byte_sent    =39;
+        metirc_radio_byte_recv    =40;
+        metirc_radio_last_rtime    =41;
+        metirc_end    =42;
+    }
+    enum DEVICE_CONFIGURE_ID {  
+        
+        dconfigure_first    =0;
+        dconfigure_cpu_id    =1;
+        dconfigure_serial    =2;
+        dconfigure_gps_sat    =3;
+        dconfigure_lora_aeui    =4;
+        dconfigure_lora_deui    =5;
+        dconfigure_lora_akey    =6;
+        dconfigure_ble_mac    =7;
+        dconfigure_ble_major    =8;
+        dconfigure_ble_minor    =9;
+        dconfigure_radio_ccid    =10;
+        dconfigure_radio_imei    =11;
+        dconfigure_radio_imsi    =12;
+        dconfigure_radio_apn    =13;
+        dconfigure_radio_pdpuser    =14;
+        dconfigure_radio_pdppwd    =15;
+        dconfigure_radio_ftpuser    =16;
+        dconfigure_radio_ftppwd    =17;
+        dconfigure_radio_ftpfolder    =18;
+        dconfigure_radio_ftpserver    =19;
+        dconfigure_mqtt_server    =20;
+        dconfigure_radio_local_ip =21;
+        dconfigure_vin	   =22;
+        dconfigure_dtc    =23;
+        dconfigure_end    =24;
+        
+    }        
+    
+    
+    
+    
+    required Type type = 1;
+    oneof payload {
+        BusMessage bus_message = 2;
+        SimpleMessage simple_message = 3;
+        DiagnosticResponse diagnostic_response = 4;
+        DiagnosticControlCommand diagnostic_command = 5;
+        DeviceControlRequest  device_control_request=7;
+        DeviceControlResponse device_control_response=8;
+        RadioDynamicValueMap dynamicValueMap =9;
+        RadioFixedValueMap   fixedValueMap=10;
+        RadioPostionValueMap poitionMap =11;
+        RadioTripValue	tripValue =12;
+
+    }  
+    optional uint32 timestamp = 13;
+    required VERSION version = 14;
+    
+}
+
+
+message DynamicField {
+    enum Type { STRING = 1; NUM = 2; BOOL = 3;  BYTE = 4; }
+    optional Type type = 1;
+    required uint32 id = 2;
+    optional uint32 ts = 3;
+    optional string string_value = 5;
+    optional bytes  byte_value = 6;
+    optional float numeric_value = 7;
+    optional bool boolean_value = 8;
+}
+
+message FixedValue {
+    required uint32 id = 1;
+    optional uint32 ts = 2;
+    optional bool isSensor =3;
+    optional float numeric_value = 4;
+}
+
+message PositionValue {
+    required uint32 ts = 2;
+    required float lat = 3;
+    required float lon = 4;
+    optional float alt = 5;
+    optional float heading = 6;
+    optional float cog = 7;
+    
+}
+
+message RadioDynamicValueMap {
+    repeated DynamicField  valueList=1;
+}
+
+message RadioPeriodicFixedValueMap {
+	required uint32 freq_time = 1;
+    required uint32 duration = 2;
+    repeated FixedValue  valueList=3;
+}
+
+message RadioFixedValueMap {
+    repeated FixedValue  valueList=1;
+}
+message RadioPostionValueMap {
+    optional uint32 pos_code = 1;
+    repeated PositionValue  valueList=2;
+}
+
+
+message RadioTripValue {
+    optional uint32 version =1 ; 
+    optional uint32 type =2 ; 
+    optional uint32 timestamp =3 ; 
+    optional uint32 size =4 ; 
+    optional uint32 encrypt =5 ; 
+    optional uint32 index =6 ; 
+    optional uint32 trip_id =7 ; 
+    optional float start_lat =8 ; 
+    optional float start_lon =9 ; 
+    optional float end_lat =10 ; 
+    optional float end_lon =11 ; 
+    optional uint32 airFlowType =12 ; 
+    optional float airFlow =13 ; 
+    optional uint32 max_speed =14 ; 
+    optional uint32 distance_km =15 ; 
+    optional uint32 duration =16 ; 
+    optional uint32 engineOilTemp =17 ; 
+    optional uint32 ParkVolt =18 ; 
+    optional uint32 MaxVolt =19 ; 
+    
+}
+
+
+message BusMessage {
+    enum FrameFormat {
+        STANDARD = 1;
+        EXTENDED = 2;
+        KWP2000 = 3;
+        ISO9141 = 4;
+    }
+    optional int32 bus = 1;
+    optional uint32 id = 2;
+    optional bytes data = 3;
+    optional FrameFormat frame_format = 4;
+}
+
+
+
+message DiagnosticControlCommand {
+    enum Action { ADD = 1; CANCEL = 2; }
+    optional DiagnosticRequest request = 1;
+    optional Action action = 2;
+}
+
+
+
+
+message DiagnosticRequest {
+    enum DecodedType { NONE = 1; OBD2 = 2; }
+    optional int32 bus = 1;
+    optional uint32 message_id = 2;
+    optional uint32 mode = 3;
+    optional uint32 pid = 4;
+    optional bytes payload = 5;
+    optional bool multiple_responses = 6;
+    optional double frequency = 7;
+    optional string name = 8;
+    optional DecodedType decoded_type = 9;
+}
+
+message DiagnosticResponse {
+    optional int32 bus = 1;
+    optional uint32 message_id = 2;
+    optional uint32 mode = 3;
+    optional uint32 pid = 4;
+    optional bool success = 5;
+    optional uint32 negative_response_code = 6;
+    optional bytes payload = 7;
+    optional double value = 8;
+}
+
+
+
+message SimpleMessage {
+    optional string name = 1;
+    optional DynamicField value = 2;
+    optional DynamicField event = 3;
+}
+
+
+
+message VersionResponse {
+    required string value = 1;
+}
+message DeviceIDResponse {
+    required string value = 1;
+}
+
+message FileOpenRequest {
+    required string value = 1;
+    required int32 mode = 2;
+}
+message FileWriteRequest {
+    required bytes value = 1;
+    required uint32 id = 2;
+}
+message FileReadRequest {
+    required int32 value = 1;
+    required uint32 id = 2;
+    optional int32 offset = 3;
+}
+message FileSeekRequest {
+    required int32 value = 1;
+    required uint32 id = 2;
+}
+message FileCloseRequest {
+    required uint32 id = 2;
+}
+
+message FileListRequest {
+    required string value = 1;
+}
+
+message FileDeleteRequest {
+    required string value = 1;
+}
+
+
+message FileReadResponse {
+    required bytes value = 1;
+}
+
+message FileListResponse {
+    required string name = 1;
+    required uint32 size = 2;
+    required uint32 date = 3;
+}
+
+message ResetRequest {
+    required int32 value = 1;
+}
+
+
+
+message CLIChange {
+    enum Type {
+        SERIAL = 1;
+        USB = 2;
+        BLE = 3;
+        NETWORK = 4;
+        MODEM = 5;
+        RADIO = 6;
+        
+    }
+    
+    required  Type type=1;
+}
+
+
+
+message ValueItemResponse {
+    required string name = 1;
+    required uint32 id = 2;
+}
+
+
+message ValueInfo {
+    optional uint32 timestamp = 2;
+    required uint32 id = 3;
+    optional float value = 4;
+}
+
+message DeviceConfigureItemResponse {
+    required string name = 1;
+    required uint32 id = 2;
+}
+
+message DeviceConfigureInfo {
+    required uint32 timestamp = 2;
+    required uint32 id = 3;
+    required uint32 type = 4;
+    required bytes payload = 5;
+}
+
+message ChallegeResponse {
+    required bytes device_id = 1;
+    required bytes challenge = 2;
+}
+
+
+
+message RequestAuth {
+    required bytes id = 1;
+    required bytes credential = 2;
+}
+
+message GetSerial {
+    required bytes value = 1;
+}
+
+message DeviceControlRequest {
+    enum Type {
+        VERSION_ID = 1;
+        DEVICE_ID = 2;
+        GET_SERIAL=3;
+        FILE_OPEN_ID = 4;
+        FILE_WRITE_ID = 5;
+        FILE_READ_ID = 6;
+        FILE_SEEK_ID = 7;
+        FILE_CLOSE_ID = 8;
+        CLI_CHANGE = 9;
+        FWUP = 10;
+        SET_RTC = 11;
+        DEVICE_RESET = 12;
+        GET_RTC = 19;
+        BEEP = 20;
+        SET_RADIO_CONSOLE = 21;
+
+        FILE_DELETE_ID = 14;
+        FILE_LIST_GET_COUNT =15;
+        FILE_LIST_GET_ITEM =16;
+        
+        SFW_VERSION =30;
+        SFW_PATCH =31;
+
+        DIAG_STOP=51;
+        DIAG_START=52;
+        
+     
+        REQUEST_CHALLENGE=91;
+        REQUEST_AUTH=92;
+        CHECK_AUTH=93;
+        CHANGE_PASSWORD=94;     
+
+
+ 		FIXED_VALUE_REQ=100; 
+ 		DYNAMIC_VALUE_REQ=101; 
+ 		PERIODIC_VALUE_REQ=102; 
+
+    }
+    required Type type = 1;
+    optional uint32 uintvalue = 2;
+
+    oneof payload {
+        FileOpenRequest  fopen=3;
+        FileWriteRequest fwrite=4;
+        FileReadRequest  fread=5;
+        FileSeekRequest  fseek=6;
+        FileCloseRequest fclose=7;
+        CLIChange  cli_change=8;
+        ResetRequest reset=12;
+        FileListRequest  flist=13;
+        FileDeleteRequest  fdelete=14;
+        RequestAuth request_auth=18;
+		RadioFixedValueMap fixedReq =19 ;
+		RadioDynamicValueMap dynamicReq =20 ;
+		RadioPeriodicFixedValueMap periodicReq =21 ;
+
+    }
+}
+
+message DeviceControlResponse {
+    required DeviceControlRequest.Type type =1 ;
+    required bool  status = 2;
+    required uint32 uintvalue = 3;
+    
+    oneof payload {
+        VersionResponse version = 4;
+        DeviceIDResponse id =5;
+        FileReadResponse fread=6;
+        FileListResponse flist=7;
+        ChallegeResponse challengeResponse=15;
+        GetSerial getSerial=16;
+        
+    }
+
+}
+
