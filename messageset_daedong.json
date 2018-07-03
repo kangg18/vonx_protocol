@@ -1,0 +1,9 @@
+
+{
+"0x07e8":
+ [
+ {"bus":1,"name":"rpm","sensorid":1, "bit_position":24,"bit_size":16,"offset":0, "mode":34,"pid":244,,"payload":"0x0c","factor":0.25,"min_value":0,"max_value":30000,"frame_format":"standard"},
+ {"bus":1,"name":"speed","sensorid":2, "bit_position":24,"bit_size":8,"offset":0,"mode":34, "pid":32,"payload":"0x33","factor":1,"min_value":0,"max_value":30000,"frame_format":"standard"},
+ ]
+
+}

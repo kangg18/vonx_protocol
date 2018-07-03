@@ -1,0 +1,22 @@
+[
+     {"name":"GND_OPEN","active":"high"},
+	 {"name":"KLINE_ON", "active":"low"},
+     {"name":"CAN1_ON", "active":"low"},
+	 {"name":"CAN2_ON", "active":"high"},
+	 {"name":"NONCAN_VSEL_8V_OFF", "active":"low"},
+     {"name":"NONCAN_VSEL_12V_OFF", "active":"high"},
+	 {"name":"NONCAN_VSEL_24V_OFF", "active":"low"},
+     {"name":"CHAN1_3_ON", "active":"high"},
+	 {"name":"CHAN1_4_ON", "active":"high"},
+	 {"name":"CHAN1_5_ON", "active":"low"},
+	 {"name":"CHAN1_6_ON", "active":"high"},
+	 {"name":"CHAN1_7_ON","active":"high"},
+     {"name":"CHAN1_9_ON", "active":"high"},
+	 {"name":"NONCAN_VSEL_OFF", "active":"high"},
+	 {"name":"CHAN1_1_ON", "active":"high"},
+     {"name":"CHAN2_3_ON", "active":"high"},
+	 {"name":"CHAN2_4_ON", "active":"high"},
+     {"name":"CHAN2_5_ON", "active":"high"},
+	 {"name":"CHAN2_6_ON", "active":"high"},
+	 {"name":"CHAN2_9_ON", "active":"high"}
+]

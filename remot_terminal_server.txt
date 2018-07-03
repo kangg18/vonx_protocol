@@ -1,0 +1,12 @@
+netcat -ul 1123 -C -k
+diag stop
+bus pipe tx 1 0x7e0 0x0322203300000000
+
+
+bus pipe rx 1 
+
+
+bus af 1 1 0x7e8 0xFFFF
+bus bf 1 true
+diag fleetstop
+

@@ -1,0 +1,11 @@
+
+{
+"0x07e8":
+ [
+ {"bus":1,"name":"rpm","sensorid":1, "bit_position":24,"bit_size":16,"offset":0, "mode":1,"pid":12,"factor":0.25,"min_value":0,"max_value":30000,"frame_format":"standard"},
+ ],
+"0x07e8":
+ [
+ {"bus":1,"name":"rpm","sensorid":1, "bit_position":24,"bit_size":16,"offset":0, "mode":1,"pid":12,"factor":0.25,"min_value":0,"max_value":30000,"frame_format":"standard"},
+ ]
+}

@@ -1,0 +1,4 @@
+#!/bin/bash
+echo "hi"
+killall netcat
+netcat -ul 1123 -C -k

@@ -1,0 +1,1 @@
+{"time":"2018-06-20 17:36:19","buzzer":"OK","adc":"OK","back_register":"OK","radio":"OK","sflash":"OK","OBD":"OK","can":"OK","k7":"OK"}

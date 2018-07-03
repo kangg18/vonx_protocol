@@ -1,0 +1,17 @@
+{  
+   "buses":{  
+      "1":{  
+         "controller":1,
+         "bustype":0,
+         "tp":0,
+         "startComms":{  
+            "id":417018865,
+            "data":"0x020100",
+            "bus":1,
+            "frame_format":"extended"
+         },
+         "pinSet":0
+      }
+     
+   }
+}

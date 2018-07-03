@@ -1,0 +1,5 @@
+[
+ {"id":2016,"bus":1,"pid":244, "mode":34,  "payload":"0x0C","legacy":"RPM", "type:":"pid"},
+ {"id":2016,"bus":1,"pid":32, "mode":34,  "payload":"0x33","legacy":"Speed", "type:":"pid"},
+ {"id":2016,"bus":1,"pid":241, "mode":34, "payload":"0x90","legacy":"VIN", "type":"vin"}
+]
