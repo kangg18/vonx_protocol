@@ -147,7 +147,7 @@ pycryptopp==0.7.1.869544967005693312591928092448767568728501330214
 pycurl==7.43.0
 pyflakes==1.6.0
 pygame==1.9.3
-Pygments==2.2.0
+Pygments==2.7.4
 pygubu==0.9.8.1
 PyInstaller==3.2.1
 pylint==1.6.4
