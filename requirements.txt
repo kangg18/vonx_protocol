@@ -169,7 +169,7 @@ pytz==2017.2
 pyusb==1.0.0a3
 pyutil==2.0.0
 PyWavelets==0.5.2
-pywin32==220
+pywin32==301
 PyYAML==3.12
 pyzmq==16.0.2
 QtAwesome==0.4.4
